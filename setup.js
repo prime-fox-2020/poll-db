@@ -13,7 +13,7 @@ const client = new Client({
   client.connect()
 
   client.query(`
-      CREATE TABLE IF NOT EXISTS Pemilih(
+      CREATE TABLE IF NOT EXISTS voters(
           id SERIAL PRIMARY KEY,
           first_name VARCHAR(20),
           last_name VARCHAR(25),
@@ -27,7 +27,7 @@ const client = new Client({
     })
     
     client.query(`
-      CREATE TABLE IF NOT EXISTS Pejabat(
+      CREATE TABLE IF NOT EXISTS politicians(
           id SERIAL PRIMARY KEY,
           name VARCHAR(30),
           partai VARCHAR(20),
@@ -44,8 +44,8 @@ const client = new Client({
     client.query(`
       CREATE TABLE IF NOT EXISTS Vote(
           id SERIAL PRIMARY KEY,
-          pemilih_id INTEGER,
-          pejabat_id INTEGER)
+          voters_id INTEGER,
+          politicians_id INTEGER)
     `, (err, res) => {
         if(err) console.log(err)
 

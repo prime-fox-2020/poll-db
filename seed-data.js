@@ -13,7 +13,7 @@ const client = new Client({
 
 const voters = fs.readFileSync(`./voters.csv`,'utf8')
 
-// Database Pemilih
+// Database voters
 votersSplit1 = voters.split(`\r\n`)
 
 let votersArrObj=[]
@@ -27,7 +27,7 @@ for (let i = 1; i < votersSplit1.length; i++) {
     })
 }
 
-let text = `INSERT INTO pemilih (first_name, last_name, gender, age) VALUES `
+let text = `INSERT INTO voters (first_name, last_name, gender, age) VALUES `
 
 for (let i = 0; i < votersArrObj.length-1; i++) {
     text += `('${votersArrObj[i].first_name}', '${votersArrObj[i].last_name}', '${votersArrObj[i].gender}', '${votersArrObj[i].age}')` 
@@ -43,7 +43,7 @@ client.query(text, (err, res) => {
 
 const politicians = fs.readFileSync(`./politicians.csv`,'utf8')
 
-// Database Pejabat
+// Database politicians
 politiciansSplit1 = politicians.split(`\r\n`)
 
 let politiciansArrObj=[]
@@ -57,7 +57,7 @@ for (let i = 1; i < politiciansSplit1.length; i++) {
     })
 }
 
-let text = `INSERT INTO pejabat (name, partai, location, grade_current) VALUES `
+text = `INSERT INTO politicians (name, partai, location, grade_current) VALUES `
 
 for (let i = 0; i < politiciansArrObj.length-1; i++) {
     text += `('${politiciansArrObj[i].name}', '${politiciansArrObj[i].partai}', '${politiciansArrObj[i].location}', '${politiciansArrObj[i].grade_current}')` 
@@ -79,15 +79,15 @@ let votesArrObj=[]
 for (let i = 1; i < votesSplit1.length; i++) {
     let temp = votesSplit1[i].split(',')
     votesArrObj.push({
-        pemilih_id : Number(temp[0]),
-        pejabat_id : Number(temp[1])
+        voters_id : Number(temp[0]),
+        politicians_id : Number(temp[1])
     })
 }
 
-let text = `INSERT INTO vote (pemilih_id, pejabat_id) VALUES `
+text = `INSERT INTO vote (voters_id, politicians_id) VALUES `
 
 for (let i = 0; i < votesArrObj.length-1; i++) {
-    text += `('${votesArrObj[i].pemilih_id}', '${votesArrObj[i].pejabat_id}')` 
+    text += `('${votesArrObj[i].voters_id}', '${votesArrObj[i].politicians_id}')` 
     i<votesArrObj.length-2 ? text += ', ':''
 }
 

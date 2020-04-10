@@ -15,10 +15,10 @@ const client = new Client({
   client.query(`
       CREATE TABLE IF NOT EXISTS Pemilih(
           id SERIAL PRIMARY KEY,
-          First_name VARCHAR(20),
-          Last_name VARCHAR(25),
-          Gender VARCHAR(10),
-          Age INTEGER)
+          first_name VARCHAR(20),
+          last_name VARCHAR(25),
+          gender VARCHAR(10),
+          age INTEGER)
     `, (err, res) => {
         if(err) console.log(err)
         
@@ -29,10 +29,10 @@ const client = new Client({
     client.query(`
       CREATE TABLE IF NOT EXISTS Pejabat(
           id SERIAL PRIMARY KEY,
-          Name VARCHAR(30),
-          Partai VARCHAR(20),
-          Location VARCHAR(30),
-          Grade_current NUMERIC(30)
+          name VARCHAR(30),
+          partai VARCHAR(20),
+          location VARCHAR(30),
+          grade_current NUMERIC(30)
             )
     `, (err, res) => {
         if(err) console.log(err)
@@ -44,8 +44,8 @@ const client = new Client({
     client.query(`
       CREATE TABLE IF NOT EXISTS Vote(
           id SERIAL PRIMARY KEY,
-          Pemilih_id INTEGER,
-          Pejabat_id INTEGER)
+          pemilih_id INTEGER,
+          pejabat_id INTEGER)
     `, (err, res) => {
         if(err) console.log(err)
 

@@ -31,11 +31,11 @@ function candidateData(){
     return candidateQuery
 }
 // console.log(candidateQuery)
-// client.query(candidateData(), (err, res) =>{
-//     if (err) console.log(err)
+client.query(candidateData(), (err, res) =>{
+    if (err) console.log(err)
     
-//     console.log(res)
-// })
+    console.log(res)
+})
 
 // Data Voters ke DB
 function voterData(){
@@ -58,11 +58,11 @@ function voterData(){
     return voterDataQuery
 }
 // console.log(voterDataQuery)
-// client.query(voterData(), (err, res) =>{
-//     if (err) console.log(err)
+client.query(voterData(), (err, res) =>{
+    if (err) console.log(err)
 
-//     console.log(res)
-// })
+    console.log(res)
+})
 
 // Data Votes ke DB
 function votesData(){

@@ -83,7 +83,6 @@ votes.forEach((item, idx)=> {
 client.query(textVotes, (err, res)=> {
   if(err) console.log(err)
   console.log(res)
-  // client.end()
 })
 
 /* RELEASE 2 */

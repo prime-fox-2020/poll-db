@@ -131,7 +131,7 @@ function readFileVotes(){
     })
 }
 
-// execute seed
+// execute seed (one by one)
 // readFilePolitician();
 // readFileVoters();
-// readFileVotes();
+readFileVotes();

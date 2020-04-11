@@ -120,7 +120,6 @@ function insertDataPoliticians(masukanData) {
             client.end()
         } else {
             console.log(res, 'berhasil')
-            client.end()
         }
     })
 }
@@ -135,7 +134,6 @@ function insertDataVoters(masukanData) {
             client.end()
         } else {
             console.log(res, 'berhasil')
-            client.end()
         }
     })
 }

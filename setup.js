@@ -18,8 +18,8 @@ const queryVoters =`CREATE TABLE voters(
 )`
 const queryVotes = `CREATE TABLE votes(
     id serial PRIMARY KEY,
-    politicians_id VARCHAR(50),
-    voters_id VARCHAR(50)
+    politicians_id INTEGER,
+    voters_id INTEGER
 )`
 
 client.query(queryPoliticians, (err, data) =>{

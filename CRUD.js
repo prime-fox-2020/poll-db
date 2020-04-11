@@ -1,11 +1,4 @@
-const { Client } = require('pg');
-const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'db_poll',
-    password: 'admin',
-    port: 5432,
-})
+const client = require('./config/conection');
 console.clear();
 
 class Manipulation {
@@ -27,19 +20,19 @@ class Manipulation {
         let insertQuery
         switch (table) {
             case 'politicians':
-                insertQuery = `INSERT INTO politicians (name,party,location,grade_current) VALUES ('${param1}','${param2}','${param3}','${param4}')`
+                insertQuery = `INSERT INTO politicians (name,party,location,grade_current) VALUES ('${param1}','${param2}','${param3}',${param4})`
                 break;
             case 'voters':
-                insertQuery = `INSERT INTO voters (first_name,last_name,gender,age) VALUES ('${param1}','${param2}','${param3}','${param4}')`
+                insertQuery = `INSERT INTO voters (first_name,last_name,gender,age) VALUES ('${param1}','${param2}','${param3}',${param4})`
                 break;
             case 'votes':
-                insertQuery = `INSERT INTO votes (voterId,politicianId) VALUES ('${param1}','${param2}')`
+                insertQuery = `INSERT INTO votes (voterId,politicianId) VALUES (${param1},${param2})`
                 break;
             default:
                 console.log('Table no yet created');
                 break;
         }
-        this.db(insertQuery, `Sedding ${table}`)
+        this.db(insertQuery, `Add to ${table} is success`)
     }
 
     static update(table, id, params) {
@@ -83,13 +76,15 @@ class Manipulation {
 
 
 // NOTE : HARUS DIJALANKAN SATU PERSATU KARENA MENGGUNAKANA CALL BACK client.end() 
-// Manipulation.add('politicians', 'susilo', 'T', 'BN', '12.937634235')
+// Manipulation.add('politicians', 'susilo', 'T', 'BN', 12.937634235)
 // Manipulation.add('voters', 'susilo', 'hartomo', 'male', 23)
 // Manipulation.add('votes', 2, 151)
 
 // Manipulation.update('politicians', 21, "name = 'encusilo dinomo'")
-// Manipulation.update('voters',151, "first_name = 'encusilo'")
-Manipulation.update('votes',164,'voterId = 151, politicianId = 2')
+// Manipulation.update('voters', 151, "first_name = 'encusilo'")
+// Manipulation.update('votes', 164, 'voterId = 151, politicianId = 2')
+
+Manipulation.delete('votes', 164)
 
 module.exports = {
     Manipulation

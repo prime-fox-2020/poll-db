@@ -1,0 +1,23 @@
+{
+  "name": "poll-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "seed-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prime-fox-2020/poll-db.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prime-fox-2020/poll-db/issues"
+  },
+  "homepage": "https://github.com/prime-fox-2020/poll-db#readme",
+  "dependencies": {
+    "pg": "^7.18.2"
+  }
+}

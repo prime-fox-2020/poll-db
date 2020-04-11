@@ -1,4 +1,4 @@
-const client = require('./connection');
+const client = require('./config/connection');
 
 let query = () => {
     let query1 = `SELECT name, party, grade_current FROM politician`;

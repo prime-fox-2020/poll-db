@@ -1,8 +1,8 @@
 const fs = require('fs');
-const client = require('./connection');
+const client = require('./config/connection');
 
 function seedingData(){
-    let data = fs.readFileSync('./politicians.csv', 'utf8').split('\n');
+    let data = fs.readFileSync('./data/politicians.csv', 'utf8').split('\n');
     let queryy = `INSERT INTO politician (name, party, location, grade_current) VALUES`;
     let listDataArr = [];
     let values = ``;
@@ -30,7 +30,7 @@ function seedingData(){
             console.log('FAILED TO INSERT');
             console.log('!!!!!!!!!!!!!!!!');
         }else{
-            data = fs.readFileSync('./voters.csv', 'utf8').split('\n');
+            data = fs.readFileSync('./data/voters.csv', 'utf8').split('\n');
             queryy = `INSERT INTO voters (first_name, last_name, gender, age) VALUES`;
             listDataArr = [];
             values = ``;
@@ -73,7 +73,7 @@ function seedingData(){
                     console.log('!!!!!!!!!!!!!!!!');
                     console.log(err)
                 } else {
-                    data = fs.readFileSync('./votes.csv', 'utf8').split('\n');
+                    data = fs.readFileSync('./data/votes.csv', 'utf8').split('\n');
                     queryy = `INSERT INTO votes (vote_id, politician_id) VALUES`;
                     listDataArr = [];
                     values = ``;

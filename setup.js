@@ -12,10 +12,10 @@ client.connect()
 
 let text = `CREATE TABLE IF NOT EXISTS candidate (
     id SERIAL PRIMARY KEY,
-    firstname VARCHAR(50),
+    fullname VARCHAR(50),
     party VARCHAR(10),
     location VARCHAR(10),
-    grade_current INTEGER
+    grade_current REAL
 );`
 client.query(text, (err, res) => {
     console.log(err, res)

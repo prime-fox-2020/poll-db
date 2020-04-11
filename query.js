@@ -14,6 +14,7 @@ const client = new Client({
 
 client.connect()
 
+//RELEASE 2 NO.1
 client.query(`
     SELECT pejabat.name,pejabat.party,pejabat.location,pejabat.grade_current FROM pejabat 
     WHERE party = 'R' AND grade_current BETWEEN 9 AND 11;
@@ -23,6 +24,7 @@ client.query(`
     console.table(res.rows)
 })
 
+//RELEASE 2 NO.2
 client.query(`SELECT COUNT(voters_id) AS totalVote, pejabat.name 
                 FROM votes 
                 JOIN pejabat 
@@ -35,6 +37,7 @@ client.query(`SELECT COUNT(voters_id) AS totalVote, pejabat.name
     console.table(res.rows)
 })
 
+//RELEASE 2 NO.3
 client.query(`SELECT pejabat.name, COUNT(voters_id) AS totalVote 
                 FROM votes 
                 JOIN pejabat 
@@ -47,6 +50,7 @@ client.query(`SELECT pejabat.name, COUNT(voters_id) AS totalVote
     console.table(res.rows)
 })
 
+//RELEASE 2 NO.4
 client.query(`SELECT COUNT(*) AS totalVote, pejabat.name,pejabat.party,pejabat.location 
                 FROM votes
                 JOIN pejabat
@@ -60,6 +64,7 @@ client.query(`SELECT COUNT(*) AS totalVote, pejabat.name,pejabat.party,pejabat.l
     console.table(res.rows)
 })
 
+//RELEASE 2 NO.5
 client.query(`SELECT first_name,last_name,gender,age 
                 FROM voters
                 WHERE voters.id IN (SELECT votes.voters_id 

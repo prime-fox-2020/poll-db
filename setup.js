@@ -127,6 +127,7 @@ class Backend {
 
     static search(table, queryString) {
         // for release 3 sub-release (1)
+        table = table || 'politicians'
         queryString = queryString || 'R:9:11';
 
         let query = `SELECT * FROM ${table} WHERE party = '${queryString.split(':')[0]}' AND grade_current BETWEEN ${Number(queryString.split(':')[1])} AND ${Number(queryString.split(':')[2])};`

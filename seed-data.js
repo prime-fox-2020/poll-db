@@ -1,5 +1,5 @@
-const fs = require('fs')
-const client = require('./connection')
+const fs = require('fs');
+const client = require('./connection');
 
 function readFilePolitician(){
     const data = fs.readFileSync('./politicians.csv', 'utf8').split('\n');

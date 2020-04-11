@@ -97,8 +97,6 @@ function convertDataVotes() {
 }
 
 
-
-
 let dataCompleteStringPoliticians = convertDataPoliticians()
 const insertPoliticians = `
 INSERT INTO politicians (name, party, location, grade_current)
@@ -111,9 +109,8 @@ VALUES ${dataCompleteStringVoters};`
 
 let dataCompleteStringVotes = convertDataVotes()
 const insertVotes = `
-INSERT INTO vote (politicians_id, voters_id)
+INSERT INTO votes (politicians_id, voters_id)
 VALUES ${dataCompleteStringVotes};`
-
 
 
 function insertDataPoliticians(masukanData) {
@@ -144,8 +141,6 @@ function insertDataVoters(masukanData) {
 }
 
 insertDataVoters(insertVoters)
-
-
 
 function insertDataVotes(masukanData) {
     client.query(masukanData,(err, res)=>{

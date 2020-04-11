@@ -16,7 +16,7 @@ const queryVoters =`CREATE TABLE voters(
     gender VARCHAR(50),
     age INTEGER
 )`
-const queryVote = `CREATE TABLE vote(
+const queryVotes = `CREATE TABLE votes(
     id serial PRIMARY KEY,
     politicians_id VARCHAR(50),
     voters_id VARCHAR(50)
@@ -26,15 +26,15 @@ client.query(queryPoliticians, (err, data) =>{
     if(err){
         console.log(err)
     }else{
-        client.query(queryVoters, (err, data)=>{
+        client.query(queryVoters, (err, data) =>{
             if(err){
                 console.log(err)                
             }else{
-                client.query(queryVote, (err, data)=>{
+                client.query(queryVotes, (err, data) =>{
                     if(err){
                         console.log(err)                
                     }else{
-                        client.end(data)
+                        client.end()
                     }
                 })
             }

@@ -3,9 +3,9 @@ const client = require('./connection')
 
 client.query(`
     CREATE TABLE IF NOT EXISTS politicians (
-        id_politicians serial PRIMARY KEY,
+        id serial PRIMARY KEY,
         name VARCHAR (50),
-        partai VARCHAR (50), 
+        party VARCHAR (50), 
         location VARCHAR (50),
         grade_current FLOAT
     )

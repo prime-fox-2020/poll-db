@@ -10,7 +10,7 @@ class Seeding {
         }
 
         for (let i = 0; i < tampungPoll.length; i++) {
-            let queryPoll = `INSERT INTO politicians(name, partai, location, grade_current)
+            let queryPoll = `INSERT INTO politicians(name, party, location, grade_current)
                              VALUES ($1, $2, $3, $4)`
 
             client.query(queryPoll, tampungPoll[i], (err, data) => {

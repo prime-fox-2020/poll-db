@@ -4,9 +4,7 @@
   "description": "poll-db",
   "main": "poll.js",
   "dependencies": {
-    "pg": "^8.0.2",
-    "pg-format": "^1.0.4",
-    "sql": "^0.78.0"
+    "pg": "^8.0.2"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,6 +1,5 @@
 //your code here
 const {Client} = require('pg');
-const sql = require('sql');
 const fs = require('fs');
 const json = fs.readFileSync('./db.json');
 const client = new Client({

@@ -22,29 +22,31 @@ const queryVotes = `CREATE TABLE votes (
     politician_id INTEGER
 );`
 
- 
+let setup = () => {
+    client.query(queryPolitician, (err, res) => {
+        if(err) {
+            console.log(err, '----------------');
+        }
+        else {
+            console.log('POLITISI');
+            client.query(queryVoters, (err, res) => {
+                if(err) {
+                    console.log(err, '----------------');
+                } 
+                else {
+                    console.log('PEMILIH')
+                    client.query(queryVotes, (err, res) => {
+                        if(err){
+                            console.log(err, '----------------');
+                        }else{
+                            console.log('SUARA');
+                            client.end();
+                        }
+                    })
+                }
+            })
+        }
+    });
+}
 
-client.query(queryPolitician, (err, res) => {
-    if(err) {
-        console.log(err, '----------------');
-    }
-    else {
-        console.log('POLITISI');
-        client.query(queryVoters, (err, res) => {
-            if(err) {
-                console.log(err, '----------------');
-            } 
-            else {
-                console.log('PEMILIH')
-                client.query(queryVotes, (err, res) => {
-                    if(err){
-                        console.log(err, '----------------');
-                    }else{
-                        console.log('SUARA');
-                        client.end();
-                    }
-                })
-            }
-        })
-    }
-});
+module.exports = setup;

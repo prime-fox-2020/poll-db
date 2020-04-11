@@ -1,4 +1,6 @@
 //your code here
+'use strict'
+
 const { Client } = require('pg');
 
 const client = new Client({
@@ -9,7 +11,7 @@ const client = new Client({
   port: 5432,
 })
 
-client.connect()
+client.connect();
 
 client.query(`
   CREATE TABLE IF NOT EXISTS politicians(
@@ -35,7 +37,8 @@ client.query(`
   console.log(err, res)
 });
 
-client.query(`
+client.query(
+  `
   CREATE TABLE IF NOT EXISTS votes(
     id SERIAL PRIMARY KEY,
     voterId SERIAL,
@@ -43,7 +46,8 @@ client.query(`
     FOREIGN KEY (politicianId) REFERENCES politicians(id),
     FOREIGN KEY (voterId) REFERENCES voters(id)
   )
-`, (err, res) => {
+`
+, (err, res) => {
   console.log(err, res)
   client.end()
 });

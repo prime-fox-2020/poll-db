@@ -55,6 +55,7 @@ for (let i = 1; i < politiciansSplit1.length; i++) {
         location: temp[2],
         grade_current: Number(temp[3])
     })
+
 }
 
 text = `INSERT INTO politicians (name, partai, location, grade_current) VALUES `
@@ -63,6 +64,7 @@ for (let i = 0; i < politiciansArrObj.length-1; i++) {
     text += `('${politiciansArrObj[i].name}', '${politiciansArrObj[i].partai}', '${politiciansArrObj[i].location}', '${politiciansArrObj[i].grade_current}')` 
     i<politiciansArrObj.length-2 ? text += ', ':''
 }
+
 
 client.query(text, (err, res) => {
     if(err) console.log(err)

@@ -10,7 +10,7 @@ const main = () => {
 
     let params = process.argv.slice(2);
     
-    switch (params[0]) {
+    switch (params[0].toUpperCase()) {
         case 'setup' : {
             if (db_status[0].db_status !== 'created') {
                 db.create();
@@ -27,28 +27,16 @@ const main = () => {
             });
         }; break;
 
-        case 'insert' || 'update' || 'delete' : {
-            let query = ''
-
-            switch (params[1]) {
-                case 'voters' : query = `voters:${params[2]}`; break;
-                case 'politician' : query = `politicians:${params[2]}`; break;
-                case 'votes' : query = `votes:${params[2]}`; break;
-            }
-
-            switch (params[0]) {
-                case 'insert' : db.insert(query.split(':')[0], query.split(':')[1]); break;
-                case 'update' : db.update(query.split(':')[0], query.split(':')[1]); break;
-                case 'delete' : db.delete(query.split(':')[0], query.split(':')[1]); break;
-            }
-
-        }; break;
-
-        case 'search' : db.search(params[1], params[2]); break;
-        case 'count_vote' : db.countVote(params[1]); break;
-        case 'find_adam' : db.findAdam(params[1]); break;
-        case 'most_votes' : db.mostVotes(); break;
-        case 'retrieve_voters' : db.retrieveVoters(params[1]); break;
+        // Release 2.1
+        case 'R21' : db.search(params[1], params[2]); break;
+        // Release 2.2
+        case 'R22' : db.countVote(params[1]); break;
+        // Release 2.3
+        case 'R23' : db.findAdam(params[1]); break;
+        // Release 2.4
+        case 'R24' : db.mostVotes(); break;
+        // Release 2.5
+        case 'R25' : db.retrieveVoters(params[1]); break;
         case 'help' : console.clear(); console.log('wat up brooo'); break;
     }
 }

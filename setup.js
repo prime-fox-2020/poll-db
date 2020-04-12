@@ -1,13 +1,5 @@
 //your code here
-const {Client} = require('pg')
-
-const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'polldb',
-    password: 'hacktiv',
-    port: 5432,
-})
+const client = require('./connection')
 
 client.connect()
 
@@ -27,15 +19,15 @@ CREATE TABLE IF NOT EXISTS Voters (
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     gender VARCHAR(50),
-    age SMALLINT
+    age INTEGER
 )
 `;
 
 const createVotesTable = `
 CREATE TABLE IF NOT EXISTS Votes (
     ID SERIAL PRIMARY KEY,
-    voterId SMALLINT,
-    politicianId SMALLINT
+    voterId INTEGER,
+    politicianId INTEGER
 )
 `;
 

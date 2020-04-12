@@ -31,7 +31,6 @@ class DataSeeding{
             else{
                 console.log('Seeding table politicians...')
             }
-            client.end()
         })
         
     }
@@ -47,8 +46,6 @@ class DataSeeding{
             if(i < value.length-1) query_text += ', '
             else query_text += ''
         }
-        client.connect()
-
         client.query(query_text, (err, res) => {
             if(err){
                 console.log(err)
@@ -57,7 +54,6 @@ class DataSeeding{
             else{
                 console.log('Seeding table voters...')
             }
-            client.end()
         })
         
     }
@@ -73,7 +69,6 @@ class DataSeeding{
             if(i < value.length-1) query_text += ', '
             else query_text += ''
         }
-        client.connect()
 
         client.query(query_text, (err, res) => {
             if(err){
@@ -89,8 +84,7 @@ class DataSeeding{
     }
 }
 
-//Harus dijalankan satu-satu karena satu sama lain merupakan proses async dan hanya dapat dijalankan dengan 1 client connect
 
 DataSeeding.seedingPoliticans()
-// DataSeeding.seedingVoters()
-// DataSeeding.seedingVotes()
+DataSeeding.seedingVoters()
+DataSeeding.seedingVotes()

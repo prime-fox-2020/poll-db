@@ -19,3 +19,64 @@ client.query(`
   // client.end()
 })
 
+client.query(`
+  SELECT
+    COUNT(*) totalVote, p.name
+  FROM
+    politicians p INNER JOIN votes v ON v.politicianId = p.id AND p.id = 17
+  GROUP BY
+    p.name  
+`, (err, res) => {
+  if (err) console.log(err);
+
+  console.log(res.rows);
+  // client.end();
+})
+
+client.query(`
+  SELECT
+    p.name, COUNT(*) totalVote
+  FROM
+    politicians p INNER JOIN votes v ON v.politicianId = p.id AND p.name = 'Adam Kinzinger'
+  GROUP BY
+    p.name  
+`, (err, res) => {
+  if (err) console.log(err);
+
+  console.log(res.rows);
+  // client.end();
+})
+
+client.query(`
+  SELECT
+    COUNT(*) totalVote,
+    p.name,
+    p.party,
+    p.location
+  FROM
+    politicians p INNER JOIN votes v ON v.politicianId = p.id
+  GROUP BY
+    p.name,
+    p.party,
+    p.location
+`, (err, res) => {
+  if (err) console.log(err);
+
+  console.log(res.rows);
+  // client.end();
+})
+
+client.query(`
+  SELECT
+    p.first_name,
+    p.last_name,
+    p.gender,
+    p.age
+  FROM
+    voters p INNER JOIN votes v ON v.voterId = p.id AND v.politicianId = 17
+`, (err, res) => {
+  if (err) console.log(err);
+
+  console.table(res.rows);
+  client.end();
+})

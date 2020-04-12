@@ -97,5 +97,5 @@ const client = new Client({
 });
 
 const filePath = ['./politicians.csv', './voters.csv', './votes.csv'];
-// Driver code.
+// Driver code
 csvToDB(filePath, client);

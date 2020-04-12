@@ -29,7 +29,7 @@ client.query(`
     SELECT politicians.name, COUNT(politicians.name) as totalVotes
         FROM voters INNER JOIN votes ON voters.id = votes.voter_id
         INNER JOIN politicians ON votes.politician_id = politicians.id
-        WHERE politicians.name LIKE '%Adam%'
+        WHERE politicians.name LIKE 'Adam %'
         GROUP BY politicians.name
 ` , (err, res) => {
     if(err) {

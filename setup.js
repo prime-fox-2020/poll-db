@@ -75,7 +75,7 @@ function makeTable(queryCommand, client, file, lastFile) {
             }
     });
 }
-
+// What if the last file finish early than the other. It will close the connection. So How? The Last Inserted file will be executed after the operation of the former file has done.
 function csvToDB(pathArray, client) {
     for (let [index, path] of pathArray.entries()) {
         queryCommand(path, (err, data) => {

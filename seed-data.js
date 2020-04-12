@@ -18,7 +18,7 @@ function candidateData(){
     for (let i = 1; i<candidateDataSplit.length-1; i++){
         candidateDataContainer.push(candidateDataSplit[i].split(','))
     }
-    let candidateQuery = `INSERT INTO candidate (fullname, party, location, grade_current) VALUES `
+    let candidateQuery = `INSERT INTO candidate (name, party, location, grade_current) VALUES `
     let candidateText = ''
     for (let j = 0; j<candidateDataContainer.length; j++){
         if (j < candidateDataContainer.length-1){

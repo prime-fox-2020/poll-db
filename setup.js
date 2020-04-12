@@ -12,7 +12,7 @@ client.connect()
 
 let text = `CREATE TABLE IF NOT EXISTS candidate (
     id SERIAL PRIMARY KEY,
-    fullname VARCHAR(50),
+    name VARCHAR(50),
     party VARCHAR(10),
     location VARCHAR(10),
     grade_current REAL

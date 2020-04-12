@@ -1,16 +1,17 @@
-const {Client} = require('pg')
+'use strict'
+const { Client } = require('pg')
 
 const client = new Client({
   user: 'postgres',
   host: 'localhost',
-  database: 'test',
+  database: 'poll_db',
   password: 'admin',
   port: 5432,
 })
 
 client.connect()
 
-client.query(`CREATE TABLE IF NOT EXISTS candidates(
+client.query(`CREATE TABLE IF NOT EXISTS politicians(
   id SERIAL PRIMARY KEY,
   name VARCHAR (40),
   party VARCHAR (70),
@@ -18,8 +19,9 @@ client.query(`CREATE TABLE IF NOT EXISTS candidates(
   grade_current REAL
 )`, (err, res) => {
   if (err) {
-    console.log(err)
+    throw err
   }
+  console.log(res)
 })
 
 client.query(`CREATE TABLE IF NOT EXISTS voters(
@@ -30,18 +32,18 @@ client.query(`CREATE TABLE IF NOT EXISTS voters(
   age real
 )`, (err, res) => {
   if (err) {
-    console.log(err)
+    throw err
   }
+  console.log(res)
 })
 
 client.query(`CREATE TABLE IF NOT EXISTS votes(
   id SERIAL PRIMARY KEY,
   voter_id INTEGER,
-  candidate_id INTEGER
-)`, (err, res) => {
+  politician_id INTEGER)`, (err, res) => {
   if (err) {
-    console.log(err)
+    throw err
   }
+  console.log(res)
   client.end()
 })
-

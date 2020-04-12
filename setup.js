@@ -1,21 +1,12 @@
 //your code here
-const { Client } = require('pg')
-
-const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'db_poll',
-    password: 'bismillah',
-    port: 5432,
-})
-
+const client = require('./conection');
 
 let tblPolliticians = `CREATE TABLE politicians (
     id serial PRIMARY KEY,
     name VARCHAR (50),
     party VARCHAR (50),
     location VARCHAR (50),
-    grade_current VARCHAR (50))`
+    grade_current NUMERIC (15, 8))`
 
 let tblVoters = `CREATE TABLE voters (
         id serial PRIMARY KEY,
@@ -30,11 +21,13 @@ let tblVotes = `CREATE TABLE votes (
             politicianId INTEGER)`
 
 client.connect()
+
 client.query(tblPolliticians, (err, res) => {
     if (err) {
         console.log(err)
         client.end()
     } else {
+        console.clear();
         console.log('created table politicians');
         client.query(tblVoters, (err, res) => {
             if (err) {

@@ -15,7 +15,7 @@ client.query(`
     name VARCHAR(20),
     party VARCHAR(20),
     location VARCHAR(20),
-    grade_current INTEGER
+    grade_current DECIMAL
   )
 `, (err, res) => {
   if (err) console.log(err);

@@ -15,7 +15,7 @@ client.query(`
 `, (err, res) => {
   if (err) console.log(err);
 
-  console.log(res.rows)
+  console.table(res.rows)
   // client.end()
 })
 
@@ -37,13 +37,15 @@ client.query(`
   SELECT
     p.name, COUNT(*) totalVote
   FROM
-    politicians p INNER JOIN votes v ON v.politicianId = p.id AND p.name = 'Adam Kinzinger'
+    politicians p INNER JOIN votes v ON v.politicianId = p.id
+  WHERE
+    p.name LIKE 'Adam%'
   GROUP BY
     p.name  
 `, (err, res) => {
   if (err) console.log(err);
 
-  console.log(res.rows);
+  console.table(res.rows);
   // client.end();
 })
 
@@ -59,10 +61,12 @@ client.query(`
     p.name,
     p.party,
     p.location
+  ORDER BY totalVote DESC
+  LIMIT 3
 `, (err, res) => {
   if (err) console.log(err);
 
-  console.log(res.rows);
+  console.table(res.rows);
   // client.end();
 })
 
@@ -73,7 +77,10 @@ client.query(`
     p.gender,
     p.age
   FROM
-    voters p INNER JOIN votes v ON v.voterId = p.id AND v.politicianId = 17
+    politicians,
+    voters p INNER JOIN votes v ON v.voterId = p.id
+  WHERE
+    v.politicianId = politicians.id AND politicians.name = 'Olympia Snowe'
 `, (err, res) => {
   if (err) console.log(err);
 
